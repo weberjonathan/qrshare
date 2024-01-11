@@ -12,10 +12,8 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 def resolve_args() -> argparse.Namespace:
     NAME    = "QR Share"
     FILE    = os.path.splitext(os.path.basename(__file__))[0]
-    VERSION = "1.0.2"
-    DESC    = "Receives text and displays it as a QR code. When embedding an image "\
-              "in the centre of the QR code and both -e and -d are used, the option "\
-              "that is specified last takes precedence."
+    VERSION = "1.1.0"
+    DESC    = "Receives text and displays it as a QR code."
 
     parser = argparse.ArgumentParser(
         prog        = FILE,
@@ -24,14 +22,13 @@ def resolve_args() -> argparse.Namespace:
 
     parser.add_argument("data",
                         help="the text encoded in the QR code, e. g. 'https://www.qrcode.com'.")
-    parser.add_argument("-d", "--embed-default",
-                        action="store_const",
-                        const="embed.jpg",
-                        dest="embed",
-                        help='embed the default image "embed.jpg" in the center of the QR code')
     parser.add_argument("-e", "--embed",
-                        help="path to an image file that will be embedded in the centre of the QR code",
-                        default="test")
+                        help="embed a custom image in the centre of the QR code by specifying "\
+                        "a path as [EMBED] or use a default image by omitting the positional "\
+                        "argument",
+                        default=None, # value if -e is not specified
+                        const="",     # value if -e is specified but no argument is given
+                        nargs="?")
     parser.add_argument("-v", "--version",
                         action="version",
                         version=f"{NAME} {VERSION}")
@@ -64,10 +61,12 @@ if __name__ == "__main__":
     logging.debug(f'Base directory: {basedir}')
 
     if embed is not None:
-        if embed == "embed.jpg": # TODO decouple embed-default and embed, so magic "embed.jpg" is no longer reserved
-            embed = os.path.join(basedir, embed)
+        logging.debug(f'Embed enabled with value: "{embed}"')
 
-        if not Path(embed).is_file():
+        if embed == "":
+            embed = os.path.join(basedir, 'embed.jpg')
+            logging.debug(f'Selecting default embed: {embed}')
+        elif not Path(embed).is_file():
             logging.warning(f'Could not find file to embed: "{embed}"')
             embed = None
 

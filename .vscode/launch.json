@@ -38,7 +38,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["https://www.youtube.com/", "--embed-default"]
+            "args": ["https://www.youtube.com/", "--embed"]
         },
         {
             "name": "Python: with data and bad embed",
@@ -48,15 +48,6 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": ["https://www.youtube.com/", "--embed", "doesnotexist.jpg"]
-        },
-        {
-            "name": "Python: with data embed and defaultembed",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "args": ["https://www.youtube.com/", "--embed-default", "--embed", "doesnotexist.jpg"]
         },
         {
             "name": "Python: version with data",
