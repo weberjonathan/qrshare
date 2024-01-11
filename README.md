@@ -15,7 +15,9 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -e [PATH], --embed [PATH]
-                        embed a custom image in the centre of the QR code by specifying a path or use a default image by omitting the positional argument
+                        embed a custom image in the centre of the QR code by specifying
+                        a path, or use a default image by omitting the positional
+                        argument
   --debug               enables debug messages
   -v, --version         show program's version number and exit
 ```
