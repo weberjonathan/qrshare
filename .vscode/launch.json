@@ -1,0 +1,71 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: no args",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": []
+        },
+        {
+            "name": "Python: with data",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["https://www.youtube.com/"]
+        },
+        {
+            "name": "Python: with data and embed",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["https://www.youtube.com/", "--embed", "embed.jpg"]
+        },
+        {
+            "name": "Python: with data and default embed",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["https://www.youtube.com/", "--embed-default"]
+        },
+        {
+            "name": "Python: with data and bad embed",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["https://www.youtube.com/", "--embed", "doesnotexist.jpg"]
+        },
+        {
+            "name": "Python: with data embed and defaultembed",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["https://www.youtube.com/", "--embed-default", "--embed", "doesnotexist.jpg"]
+        },
+        {
+            "name": "Python: version with data",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["https://www.youtube.com/", "-v"]
+        }
+    ]
+}
