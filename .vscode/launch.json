@@ -20,7 +20,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["https://www.youtube.com/"]
+            "args": ["https://www.youtube.com/", "--debug"]
         },
         {
             "name": "Python: with data and embed",
@@ -29,7 +29,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["https://www.youtube.com/", "--embed", "embed.jpg"]
+            "args": ["https://www.youtube.com/", "--embed", "embed.jpg", "--debug"]
         },
         {
             "name": "Python: with data and default embed",
@@ -38,7 +38,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["https://www.youtube.com/", "--embed"]
+            "args": ["https://www.youtube.com/", "--embed", "--debug"]
         },
         {
             "name": "Python: with data and bad embed",
@@ -47,7 +47,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["https://www.youtube.com/", "--embed", "doesnotexist.jpg"]
+            "args": ["https://www.youtube.com/", "--embed", "doesnotexist.jpg", "--debug"]
         },
         {
             "name": "Python: version with data",

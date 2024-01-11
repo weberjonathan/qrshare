@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 def resolve_args() -> argparse.Namespace:
     NAME    = "QR Share"
     FILE    = os.path.splitext(os.path.basename(__file__))[0]
-    VERSION = "1.1.0"
+    VERSION = "1.2.0"
     DESC    = "Receives text and displays it as a QR code."
 
     parser = argparse.ArgumentParser(
@@ -24,11 +24,14 @@ def resolve_args() -> argparse.Namespace:
                         help="the text encoded in the QR code, e. g. 'https://www.qrcode.com'.")
     parser.add_argument("-e", "--embed",
                         help="embed a custom image in the centre of the QR code by specifying "\
-                        "a path as [EMBED] or use a default image by omitting the positional "\
-                        "argument",
+                             "a path as [EMBED] or use a default image by omitting the positional "\
+                             "argument",
                         default=None, # value if -e is not specified
                         const="",     # value if -e is specified but no argument is given
                         nargs="?")
+    parser.add_argument("--debug",
+                        action="store_true",
+                        help="enables debug messages")
     parser.add_argument("-v", "--version",
                         action="version",
                         version=f"{NAME} {VERSION}")
@@ -57,8 +60,12 @@ if __name__ == "__main__":
     data = args.data
     embed = args.embed
 
+    level = logging.DEBUG if args.debug else logging.INFO
+    logging.getLogger().setLevel(level)
+
     basedir = os.path.dirname(__file__)
     logging.debug(f'Base directory: {basedir}')
+    logging.debug(f'Pwd: {os.getcwd()}')
 
     if embed is not None:
         logging.debug(f'Embed enabled with value: "{embed}"')
